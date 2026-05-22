@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,11 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed;
     public float TurnSpeed;
     public bool IsCrouched;
+
+    public Transform soundSphere;
+    public float minSoundSphereRadius;
+    public float maxSoundSphereRadius;
+    private float scaleSoundSphere;
 
     [SerializeField] private GameObject PlayerCam;
     [SerializeField] private float CrouchDiff;
@@ -23,7 +29,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // movement of player
+        PlayerMovementVector.Normalize();
         GetComponent<Rigidbody>().AddRelativeForce(MoveSpeed * PlayerMovementVector);
+
+        // scale the sound sphere as player moves - faster means player makes more sound
+        scaleSoundSphere = minSoundSphereRadius + Vector3.Magnitude(GetComponent<Rigidbody>().linearVelocity) * (maxSoundSphereRadius - minSoundSphereRadius) / MoveSpeed;
+        soundSphere.transform.localScale = new Vector3(scaleSoundSphere, scaleSoundSphere, scaleSoundSphere);
+    }
+
+    private void FixedUpdate()
+    {
     }
 
     void OnMove(InputValue inputValue)
@@ -33,6 +49,7 @@ public class PlayerController : MonoBehaviour
         PlayerMovementVector = new Vector3(MoveVector.x, 0, MoveVector.y);
     }
 
+    /*
     void OnLook(InputValue inputValue)
     {
         Vector2 LookVector = inputValue.Get<Vector2>();
@@ -54,6 +71,7 @@ public class PlayerController : MonoBehaviour
             PlayerCam.transform.Rotate(-LookVector.y * TurnSpeed,0,0);
         }
     }
+    */
 
     void OnCrouch(InputValue action)
     {
