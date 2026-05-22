@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 PlayerMovementVector;
     public float MoveSpeed;
     public float TurnSpeed;
+    public bool IsCrouched;
 
     [SerializeField] private GameObject PlayerCam;
+    [SerializeField] private float CrouchDiff;
     void Start()
     {
         PlayerMovementVector = Vector3.zero;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        IsCrouched = false;
     }
 
     // Update is called once per frame
@@ -50,5 +53,20 @@ public class PlayerController : MonoBehaviour
         {
             PlayerCam.transform.Rotate(-LookVector.y * TurnSpeed,0,0);
         }
+    }
+
+    void OnCrouch(InputValue action)
+    {
+        if (!IsCrouched)
+        {
+            transform.localScale += new Vector3(0f,-CrouchDiff,0f);
+            transform.Translate(0,-CrouchDiff,0);
+        }
+        else
+        {
+            transform.localScale += new Vector3(0f,CrouchDiff,0f);
+            transform.Translate(0,CrouchDiff,0);
+        }
+        IsCrouched = !IsCrouched;
     }
 }
