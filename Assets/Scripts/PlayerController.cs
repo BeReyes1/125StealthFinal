@@ -108,11 +108,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Die()
+    public void Die()
     {
         dead = true;
         transform.Rotate(90,0,0);
         MoveSpeed = 0;
         text.SetActive(true);
+    }
+
+    public void Win()
+    {
+        text.SetActive(true);
+        text.GetComponent<TextMeshProUGUI>().text = "You Win!";
     }
 }

@@ -15,15 +15,17 @@ public class GuardController : MonoBehaviour
 
     private NavMeshAgent agent;
     private MeshRenderer mesh;
-     public Vector3 LastKnownLocation;
+    public Vector3 LastKnownLocation;
+    private Collider collider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
          agent = GetComponent<NavMeshAgent>();
          target = transform.position;
-         LastKnownLocation = Vector3.zero;
+         LastKnownLocation = transform.position;
          mesh = GetComponent<MeshRenderer>();
+         collider = GetComponent<Collider>();
 
     }
 
@@ -67,9 +69,17 @@ public class GuardController : MonoBehaviour
             case State.Chase:
                 mesh.materials[0].color = Color.red;
                 agent.speed = 5f;
-                
                 break;
         }
+        //search
+        /*
+        for (float i = 0f; i < 60; i++)
+        {
+            Ray r = Ray(new Vector3(0,0,0),transform.position);
+            collider.Raycast(r, out hit, 100f);
+        }
+        */
+
         agent.SetDestination(target);
         //Debug.Log(currentState);
     }
@@ -84,5 +94,13 @@ public class GuardController : MonoBehaviour
             finalPosition = hit.position;            
         }
         return finalPosition;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == Player)
+        {
+            other.gameObject.GetComponent<PlayerController>().Die();
+        }
     }
 }
