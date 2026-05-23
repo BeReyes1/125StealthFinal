@@ -48,12 +48,12 @@ public class GuardController : MonoBehaviour
                     int r = Random.Range(0,10);
                     if (r < randomness)
                     {
-                        currentState = State.Chase;
+                        currentState = State.Random;
                         break;
                     }
                     else 
                     {
-                        currentState = State.Chase;
+                        currentState = State.Patrol;
                         break;
                     }
                 }
@@ -84,16 +84,19 @@ public class GuardController : MonoBehaviour
         {
             float angle = (-viewAngle/2 + i * (viewAngle / rayCount));
             Vector3 dir = Quaternion.Euler(0, angle,0) * transform.forward * viewDistance;
-            Debug.DrawRay(transform.position,dir,Color.yellow);
-            Ray r = new Ray(dir,transform.position);
+            Ray r = new Ray(transform.position,dir);
             RaycastHit hit;
 
-            if (collider.Raycast(r, out hit, viewDistance))
+            if (Physics.Raycast(r, out hit, viewDistance))
             {
                 if (hit.collider.gameObject == Player)
                 {
-                    LastKnownLocation = Player.transform.position;
-                    currentState = State.Chase;
+                    if (!Player.GetComponent<PlayerController>().IsCrouched)
+                    {
+                        LastKnownLocation = Player.transform.position;
+                        currentState = State.Chase;
+                    }
+                    
                 }
             }
         }
@@ -118,6 +121,17 @@ public class GuardController : MonoBehaviour
         if (other.gameObject == Player)
         {
             other.gameObject.GetComponent<PlayerController>().Die();
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+         for (int i = 0; i < rayCount; i++)
+        {
+            float angle = (-viewAngle/2 + i * (viewAngle / rayCount));
+            Vector3 dir = Quaternion.Euler(0, angle,0) * transform.forward * viewDistance;
+            Gizmos.DrawRay(transform.position, dir);
         }
     }
 
