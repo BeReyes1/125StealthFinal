@@ -54,10 +54,7 @@ public class GuardController : MonoBehaviour
                 break;
             case State.Random:
                 mesh.materials[0].color = Color.purple;
-                if (Vector3.Distance(transform.position, target) <= 1)
-                {
-                    target = RandomNavmeshLocation(50f);
-                }
+                target = RandomNavmeshLocation(50f);
                 currentState = State.Move;
                 break;
             case State.Patrol:
