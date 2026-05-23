@@ -69,9 +69,6 @@ public class GuardController : MonoBehaviour
                 agent.speed = 5f;
                 
                 break;
-            case State.Return:
-                // return
-                break;
         }
         agent.SetDestination(target);
         //Debug.Log(currentState);
