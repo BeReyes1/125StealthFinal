@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
         IsCrouched = false;
         dead = false;
         text.SetActive(false);
-        //Die();
     }
 
     // Update is called once per frame

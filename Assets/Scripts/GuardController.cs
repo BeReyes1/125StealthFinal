@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class GuardController : MonoBehaviour
 {
 
-    public enum State { Patrol, Chase, Return, Random, Move}
+    public enum State { Patrol, Chase, Random, Move}
     public State currentState = State.Move;
     [SerializeField] private GameObject Player;
 
