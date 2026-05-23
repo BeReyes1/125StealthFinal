@@ -18,6 +18,12 @@ public class GuardController : MonoBehaviour
     public Vector3 LastKnownLocation;
     private Collider collider;
 
+    public float viewRadius = 5f;
+    public float viewAngle = 60f;
+    public int rayCount = 60;
+    public float viewDistance = 10f;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,12 +48,12 @@ public class GuardController : MonoBehaviour
                     int r = Random.Range(0,10);
                     if (r < randomness)
                     {
-                        currentState = State.Random;
+                        currentState = State.Chase;
                         break;
                     }
                     else 
                     {
-                        currentState = State.Patrol;
+                        currentState = State.Chase;
                         break;
                     }
                 }
@@ -64,19 +70,33 @@ public class GuardController : MonoBehaviour
                 currentState = State.Move;
                 break;
             case State.Chase:
+                target = LastKnownLocation;
                 mesh.materials[0].color = Color.red;
                 agent.speed = 5f;
+                if (Vector3.Distance(transform.position, target) <= 0.5)
+                {
+                    currentState = State.Move;
+                }
                 break;
         }
         //search
-        /*
-        for (float i = 0f; i < 60; i++)
+        for (int i = 0; i < rayCount; i++)
         {
-            Ray r = Ray(new Vector3(0,0,0),transform.position);
-            collider.Raycast(r, out hit, 100f);
-        }
-        */
+            float angle = (-viewAngle/2 + i * (viewAngle / rayCount));
+            Vector3 dir = Quaternion.Euler(0, angle,0) * transform.forward * viewDistance;
+            Debug.DrawRay(transform.position,dir,Color.yellow);
+            Ray r = new Ray(dir,transform.position);
+            RaycastHit hit;
 
+            if (collider.Raycast(r, out hit, viewDistance))
+            {
+                if (hit.collider.gameObject == Player)
+                {
+                    LastKnownLocation = Player.transform.position;
+                    currentState = State.Chase;
+                }
+            }
+        }
         agent.SetDestination(target);
         //Debug.Log(currentState);
     }
@@ -100,4 +120,5 @@ public class GuardController : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().Die();
         }
     }
+
 }
