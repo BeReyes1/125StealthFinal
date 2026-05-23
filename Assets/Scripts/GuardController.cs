@@ -23,6 +23,8 @@ public class GuardController : MonoBehaviour
     public int rayCount = 60;
     public float viewDistance = 10f;
 
+    [SerializeField] GameObject DetectionText;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -76,6 +78,11 @@ public class GuardController : MonoBehaviour
                 if (Vector3.Distance(transform.position, target) <= 0.5)
                 {
                     currentState = State.Move;
+                    DetectionText.SetActive(false);
+                }
+                else
+                {
+                    DetectionText.SetActive(true);
                 }
                 break;
         }
