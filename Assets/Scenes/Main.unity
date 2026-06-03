@@ -17914,6 +17914,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
+      propertyPath: viewDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
       propertyPath: DetectionText
       value: 
       objectReference: {fileID: 2119983571}
@@ -24669,6 +24673,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
+      propertyPath: viewDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
       propertyPath: DetectionText
       value: 
       objectReference: {fileID: 2119983571}
@@ -24962,7 +24970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30de48f6b3472438df44ab0ee7a0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  MoveSpeed: 20
+  MoveSpeed: 50
   TurnSpeed: 0.2
   IsCrouched: 0
   soundSphere: {fileID: 950025953}
@@ -25149,6 +25157,10 @@ PrefabInstance:
     - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
       propertyPath: randomness
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
+      propertyPath: viewDistance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4174858576306634957, guid: e33807066faeba14188d1e4cfcc205be, type: 3}
       propertyPath: DetectionText
