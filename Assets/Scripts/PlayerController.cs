@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed;
     public float TurnSpeed;
     public bool IsCrouched;
+    public int InLight;
 
     public Transform soundSphere;
     public float minSoundSphereRadius;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         dead = false;
         text.SetActive(false);
         TrueMoveSpeed = MoveSpeed;
+        InLight = 0;
     }
 
     // Update is called once per frame
@@ -125,5 +127,15 @@ public class PlayerController : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "You Win!";
+    }
+
+    public void EnterLight()
+    {
+        InLight++;
+    }
+
+    public void ExitLight()
+    {
+        InLight--;
     }
 }
