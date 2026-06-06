@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         IsCrouched = false;
         dead = false;
-        text.SetActive(false);
+        if (text != null) text.SetActive(false);
         TrueMoveSpeed = MoveSpeed;
         InLight = 0;
     }
