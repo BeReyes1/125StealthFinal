@@ -10,12 +10,15 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed;
     public float TurnSpeed;
     public bool IsCrouched;
+    public int InLight;
 
     public Transform soundSphere;
     public float minSoundSphereRadius;
     public float maxSoundSphereRadius;
     private float scaleSoundSphere;
     private bool dead;
+
+    private float TrueMoveSpeed;
 
     [SerializeField] private GameObject PlayerCam;
     [SerializeField] private float CrouchDiff;
@@ -29,22 +32,26 @@ public class PlayerController : MonoBehaviour
         IsCrouched = false;
         dead = false;
         text.SetActive(false);
+        TrueMoveSpeed = MoveSpeed;
+        InLight = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // movement of player
+       
+    }
+
+    void FixedUpdate()
+    {
+        
+         // movement of player
         PlayerMovementVector.Normalize();
-        GetComponent<Rigidbody>().AddRelativeForce(MoveSpeed * PlayerMovementVector);
+        GetComponent<Rigidbody>().AddRelativeForce(TrueMoveSpeed * PlayerMovementVector);
 
         // scale the sound sphere as player moves - faster means player makes more sound
        // scaleSoundSphere = minSoundSphereRadius + Vector3.Magnitude(GetComponent<Rigidbody>().linearVelocity) * (maxSoundSphereRadius - minSoundSphereRadius) / MoveSpeed;
         //soundSphere.transform.localScale = new Vector3(scaleSoundSphere, scaleSoundSphere, scaleSoundSphere);
-    }
-
-    private void FixedUpdate()
-    {
     }
 
     void OnMove(InputValue inputValue)
@@ -90,7 +97,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate(0,-CrouchDiff,0);
             PlayerCam.transform.Translate(0,HeightDiff,-1.721f);
             transform.localScale += new Vector3(0f,-CrouchDiff,0f);
-            MoveSpeed = 0;
+            TrueMoveSpeed = 0;
             
             
         }
@@ -99,7 +106,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale += new Vector3(0f,CrouchDiff,0f);
             transform.Translate(0,CrouchDiff,0);
             PlayerCam.transform.Translate(0f,-HeightDiff,1.721f);
-            MoveSpeed = 20;
+            TrueMoveSpeed = MoveSpeed;
             
             
             
@@ -112,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         dead = true;
         transform.Rotate(90,0,0);
-        MoveSpeed = 0;
+        TrueMoveSpeed = 0;
         text.SetActive(true);
     }
 
@@ -120,5 +127,15 @@ public class PlayerController : MonoBehaviour
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "You Win!";
+    }
+
+    public void EnterLight()
+    {
+        InLight++;
+    }
+
+    public void ExitLight()
+    {
+        InLight--;
     }
 }

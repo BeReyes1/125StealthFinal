@@ -17,11 +17,9 @@ public class GuardController : MonoBehaviour
     private MeshRenderer mesh;
     public Vector3 LastKnownLocation;
     private Collider collider;
-
-    public float viewRadius = 5f;
     public float viewAngle = 60f;
     public int rayCount = 60;
-    public float viewDistance = 10f;
+    public float viewDistance;
 
     [SerializeField] GameObject DetectionText;
 
