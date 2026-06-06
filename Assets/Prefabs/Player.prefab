@@ -264,9 +264,10 @@ GameObject:
   - component: {fileID: 3478975084124758027}
   - component: {fileID: 3778497042607629203}
   - component: {fileID: 8601678861832243969}
+  - component: {fileID: -5755989441005148462}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,6 +384,7 @@ MonoBehaviour:
   MoveSpeed: 20
   TurnSpeed: 0.2
   IsCrouched: 0
+  InLight: 0
   soundSphere: {fileID: 5568805646443523126}
   minSoundSphereRadius: 0.8
   maxSoundSphereRadius: 12
@@ -447,3 +449,15 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-5755989441005148462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6138510283707543566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8c6720a6a6a0641a3ee8aa8574c75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
