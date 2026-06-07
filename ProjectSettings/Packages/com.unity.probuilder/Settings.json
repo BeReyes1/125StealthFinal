@@ -119,12 +119,12 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
-                "value": "{\"m_Value\":{\"x\":36.26445007324219,\"y\":4.309368133544922,\"z\":1.5228910446166993}}"
+                "value": "{\"m_Value\":{\"x\":21.770790100097658,\"y\":67.21321868896485,\"z\":25.498001098632814}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Plane",
-                "value": "{\"m_Value\":{\"x\":30.432151794433595,\"y\":0.0,\"z\":-26.68680191040039}}"
+                "value": "{\"m_Value\":{\"x\":36.026397705078128,\"y\":0.0,\"z\":51.84019470214844}}"
             },
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -204,7 +204,7 @@
             {
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "WeldVertices.weldDistance",
-                "value": "{\"m_Value\":0.3400000035762787}"
+                "value": "{\"m_Value\":0.5799999833106995}"
             }
         ]
     }
