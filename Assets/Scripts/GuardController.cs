@@ -96,7 +96,7 @@ public class GuardController : MonoBehaviour
             {
                 if (hit.collider.gameObject == Player)
                 {
-                    if (!Player.GetComponent<PlayerController>().IsCrouched)
+                    if (!Player.GetComponent<PlayerController>().IsCrouched && !Player.GetComponent<PlayerController>().IsDisguised())
                     {
                         LastKnownLocation = Player.transform.position;
                         currentState = State.Chase;
