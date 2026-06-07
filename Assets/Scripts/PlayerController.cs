@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float CrouchDiff;
     [SerializeField] private float HeightDiff;
     [SerializeField] private GameObject text;
+
+    public event Action OnWin;
+    public event Action OnLose;
+
     void Start()
     {
         PlayerMovementVector = Vector3.zero;
@@ -121,12 +126,14 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(90,0,0);
         TrueMoveSpeed = 0;
         text.SetActive(true);
+        OnLose?.Invoke();
     }
 
     public void Win()
     {
         text.SetActive(true);
         text.GetComponent<TextMeshProUGUI>().text = "You Win!";
+        OnWin?.Invoke();
     }
 
     public void EnterLight()
