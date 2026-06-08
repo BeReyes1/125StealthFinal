@@ -1,0 +1,12 @@
+# Unity YAML smart merge
+*.unity merge=unityyamlmerge
+*.prefab merge=unityyamlmerge
+*.asset merge=unityyamlmerge
+*.meta merge=unityyamlmerge
+
+# Mark binary files
+*.png binary
+*.jpg binary
+*.fbx binary
+*.wav binary
+*.mp3 binary
