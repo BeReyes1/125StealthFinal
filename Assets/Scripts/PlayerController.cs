@@ -121,14 +121,17 @@ public class PlayerController : MonoBehaviour
         dead = true;
         transform.Rotate(90, 0, 0);
         TrueMoveSpeed = 0;
-        text.SetActive(true);
+        if (text != null) text.SetActive(true);
         OnLose?.Invoke();
     }
 
     public void Win()
     {
-        text.SetActive(true);
-        text.GetComponent<TextMeshProUGUI>().text = "You Win!";
+        if (text != null)
+        {
+            text.SetActive(true);
+            text.GetComponent<TextMeshProUGUI>().text = "You Win!";
+        }
         OnWin?.Invoke();
     }
 
