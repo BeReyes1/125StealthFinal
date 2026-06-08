@@ -800,7 +800,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Original Project by Hao Deng and Charles Haiwen '
+  m_text: "Original Project by Hao Deng and Charles Haiwen \nLevel Design by Beckham
+    Reyes, Charles Haiwen, and Hao Deng\nGameplay Mechanics by Dominic Umbrasas\nLighting
+    by Charles Haiwen\nUI Design/Engineering by Beckham Reyes\nSound Sourcing by
+    Hao Deng"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c5d4c4205cdb3143b0367b24a875c1a, type: 2}
   m_sharedMaterial: {fileID: -4340809162720068674, guid: 3c5d4c4205cdb3143b0367b24a875c1a, type: 2}
