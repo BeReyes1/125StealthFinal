@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 //The physical button
 public class ButtonSwitch : MonoBehaviour
 {
     [SerializeField] private LightingManager lightingManager;
     [SerializeField] private MeshRenderer buttonMesh;
 
+    public event Action OnEnterLight;
+    public event Action OnExitLight;
     private bool playerNearby = false;
 
     void Update()
@@ -19,11 +22,19 @@ public class ButtonSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) playerNearby = true;
+        if (other.CompareTag("Player"))
+        {
+            playerNearby = true;
+            OnEnterLight?.Invoke();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) playerNearby = false;
+        if (other.CompareTag("Player")) 
+        {
+            OnExitLight?.Invoke();
+            playerNearby = false;
+        } 
     }
 }
