@@ -26112,6 +26112,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1628699395}
+    - target: {fileID: 5327948167411731854, guid: 11e66d423f04d4d46903ec28859bc59a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -502
+      objectReference: {fileID: 0}
     - target: {fileID: 7277074823176163841, guid: 11e66d423f04d4d46903ec28859bc59a, type: 3}
       propertyPath: m_Name
       value: Canvas
