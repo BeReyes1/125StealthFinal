@@ -8,6 +8,8 @@ public class SFXScript : MonoBehaviour
     private AudioSource audioSource;
 
     public AudioClip alert;
+    public AudioClip pickup;
+    public AudioClip unlock;
 
     private void Awake()
     {

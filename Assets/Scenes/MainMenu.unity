@@ -546,6 +546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXScript
   alert: {fileID: 8300000, guid: e05453a50c3f4f5469a00b6162df4661, type: 3}
+  pickup: {fileID: 8300000, guid: 39c1dee5f0deecb4fac8b4f177ac9aca, type: 3}
+  unlock: {fileID: 8300000, guid: 33c1120eab5906341b156e29f3b5fce5, type: 3}
 --- !u!82 &385845766
 AudioSource:
   m_ObjectHideFlags: 0

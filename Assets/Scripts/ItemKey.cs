@@ -14,6 +14,7 @@ public class Key : MonoBehaviour
                 inventory.AddKey(keyID);
                 Destroy(gameObject); 
             }
+            SFXScript.Instance.PlayEffect(SFXScript.Instance.pickup);
         }
     }
 }

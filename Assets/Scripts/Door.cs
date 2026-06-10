@@ -18,6 +18,7 @@ public class DoorController : MonoBehaviour
                     inventory.RemoveKey(requiredKeyID);
 
                 Destroy(gameObject);
+                SFXScript.Instance.PlayEffect(SFXScript.Instance.unlock);
             }
         }
     }
