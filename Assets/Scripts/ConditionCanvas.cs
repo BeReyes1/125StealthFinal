@@ -52,6 +52,7 @@ public class ConditionCanvas : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         MusicScript.Instance.ChangeMusic(MusicScript.Instance.menuTheme);
         SceneManager.LoadSceneAsync("MainMenu");
     }
