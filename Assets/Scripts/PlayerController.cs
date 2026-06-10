@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
         InLight = 0;
         if (playerMeshRenderer != null)
             originalColor = playerMeshRenderer.material.color;
+        MusicScript.Instance.ChangeMusic(MusicScript.Instance.gameTheme);
     }
 
     void Update()
