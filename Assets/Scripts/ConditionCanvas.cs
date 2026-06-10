@@ -34,11 +34,13 @@ public class ConditionCanvas : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;
+        MusicScript.Instance.ChangeMusic(MusicScript.Instance.loseTheme);
     }
 
     public void RestartLevel()
     {
         Time.timeScale = 1f;
+        MusicScript.Instance.ChangeMusic(MusicScript.Instance.gameTheme);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
 
@@ -50,6 +52,7 @@ public class ConditionCanvas : MonoBehaviour
 
     public void MainMenu()
     {
+        MusicScript.Instance.ChangeMusic(MusicScript.Instance.menuTheme);
         SceneManager.LoadSceneAsync("MainMenu");
     }
 

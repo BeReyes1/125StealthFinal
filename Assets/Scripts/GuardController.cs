@@ -99,6 +99,10 @@ public class GuardController : MonoBehaviour
                     if (!Player.GetComponent<PlayerController>().IsCrouched && !Player.GetComponent<PlayerController>().IsDisguised())
                     {
                         LastKnownLocation = Player.transform.position;
+                        if (currentState != State.Chase)
+                        {
+                            SFXScript.Instance.PlayEffect(SFXScript.Instance.alert);
+                        }
                         currentState = State.Chase;
                     }
                     

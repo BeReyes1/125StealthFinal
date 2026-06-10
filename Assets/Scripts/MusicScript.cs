@@ -7,26 +7,29 @@ public class MusicScript : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public AudioClip menuTheme;
+    public AudioClip gameTheme;
+    public AudioClip loseTheme;
+
     private void Awake()
     {
         // Enforce the Singleton Pattern
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // Delete duplicate manager in new scenes
+            Destroy(gameObject);
             return;
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Prevent destruction on scene load
+        DontDestroyOnLoad(gameObject);
 
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Call this method from other scripts to change tracks between scenes
     public void ChangeMusic(AudioClip newClip)
     {
         if (audioSource.clip == newClip) return; 
-        
+        audioSource.Stop();
         audioSource.clip = newClip;
         audioSource.Play();
     }
